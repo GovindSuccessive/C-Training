@@ -93,10 +93,25 @@ namespace Assingment_Day_2
         static void Main(string[] args)
         {
 
-            // Assignment 1. Find the BI (balanced index) number: it is the index of an integer arr for which,sum of lower indexed value = sum of higher indexed value;
-            /*
-                        int n;
-                        int sum=0;
+            bool flag = true;
+
+            while (flag)
+            {
+                Console.WriteLine("What do you want to do?\n");
+                Console.WriteLine("1. Find the BI (balanced index) number: it is the index of an integer arr for which,sum of lower indexed value = sum of higher indexed value;\n");
+                Console.WriteLine("2. Find the Leaders in an arr Given an integer arr A containing N distinct integers, you have to find the count of all the leaders in arr A.\n");
+                Console.WriteLine("3. Lazy person's switch action A wire connects N light bulbs.\n");
+                Console.WriteLine("4.Maximum Sum of an array\n");
+                Console.WriteLine("Break\n");
+
+                Console.WriteLine("\tWhat do you want to run?");
+                int choice = Convert.ToInt32(Console.ReadLine());
+
+                switch (choice)
+                {
+                    case 1:
+                         int n;
+                        int sum = 0;
 
                         Console.Write("Enter the size of an arr = ");
                         n = Convert.ToInt32(Console.ReadLine());
@@ -104,85 +119,87 @@ namespace Assingment_Day_2
                         int[] arr = new int[n];
                         Console.WriteLine("Enter the arr elemenst");
 
-                        for(int i = 0; i < n; i++)
+                        for (int i = 0; i < n; i++)
                         {
-                            arr[i]= Convert.ToInt32(Console.ReadLine());
+                            arr[i] = Convert.ToInt32(Console.ReadLine());
                             sum += arr[i];
                         }
 
-                        Console.WriteLine("Index of the balance point is = "+FindBalancePoint(arr,n,sum));
-            */
+                        Console.WriteLine("Index of the balance point is = " + FindBalancePoint(arr, n, sum));
+                        
+                        break;
 
-            // Assignment 2.  Find the Leaders in an arr Given an integer arr A containing N distinct integers, you have to find the count of all the leaders in arr A. 
-/*
-            int n;
+                    case 2:
+                        int n1;
 
-            Console.Write("Enter the size of an arr = ");
-            n = Convert.ToInt32(Console.ReadLine());
+                        Console.Write("Enter the size of an arr = ");
+                        n1 = Convert.ToInt32(Console.ReadLine());
 
-            int[] arr = new int[n];
-            Console.WriteLine("Enter the arr elemenst");
+                        int[] arr1 = new int[n1];
+                        Console.WriteLine("Enter the arr elemenst");
 
-            for (int i = 0; i < n; i++)
-            {
-                arr[i] = Convert.ToInt32(Console.ReadLine());
+                        for (int i = 0; i < n1; i++)
+                        {
+                            arr1[i] = Convert.ToInt32(Console.ReadLine());
+                        }
+
+                        Console.WriteLine("Total Leaders are = " + CountLeaders(arr1, n1));
+                        break;
+
+                    case 3:
+                        int n2;
+                        Console.Write("Enter the size of an arr = ");
+                        n2 = Convert.ToInt32(Console.ReadLine());
+
+                        int[] arr2 = new int[n2];
+                        Console.WriteLine("Enter the arr elemenst");
+
+                        for (int i = 0; i < n2; i++)
+                        {
+                            arr2[i] = Convert.ToInt32(Console.ReadLine());
+                        }
+
+                        Console.WriteLine("minimum count = " + MinimumCount(arr2));
+                        break;
+                    case 4:
+                        int n3;
+                        Console.Write("Enter the size of an arr = ");
+                        n3 = Convert.ToInt32(Console.ReadLine());
+
+                        int[] arr3 = new int[n3];
+                        Console.WriteLine("Enter the arr elemenst");
+
+                        for (int i = 0; i < n3; i++)
+                        {
+                            arr3[i] = Convert.ToInt32(Console.ReadLine());
+                        }
+
+                        Console.WriteLine("Maximum sum = " + MaximumSum(arr3, n3));
+                        break;
+                    case 5:
+                        break;
+                    default:
+                        Console.WriteLine("please do right choice");
+                        break;
+                }
+
+                Console.WriteLine("\tdo you want to run? Enter Y for yes or N for no");
+                char ch= Convert.ToChar(Console.ReadLine());
+                if (ch=='Y' || ch == 'y')
+                {
+                    flag = true;
+                }
+                else if(ch=='N' || ch=='n')
+                {
+                    flag = false;
+                }
+                else
+                {
+                    Console.WriteLine("Please enter write choice yes for y and no for n");
+                }
             }
 
-            Console.WriteLine("Total Leaders are = " + CountLeaders(arr, n));
 
-*/
-            /*
-                        Assignment 3.
-
-                        Lazy person's switch action A wire connects N light bulbs.
-                        Each bulb has a switch associated with it; however, due to faulty wiring,
-                        a switch also changes the state of all the bulbs to the right of the current bulb.
-                        Given an initial state of all bulbs, find the minimum number of switches a person have to press to turn on all the bulbs.
-                        The person can press the same switch multiple times.
-
-                        Note: 0 represents the bulb is off and 1 represents the bulb is on.
-            */
-            /*
-                        int n;
-                        Console.Write("Enter the size of an arr = ");
-                        n = Convert.ToInt32(Console.ReadLine());
-
-                        int[] arr = new int[n];
-                        Console.WriteLine("Enter the arr elemenst");
-
-                        for (int i = 0; i < n; i++)
-                        {
-                            arr[i] = Convert.ToInt32(Console.ReadLine());
-                        }
-
-                        Console.WriteLine("minimum count = "+ MinimumCount(arr));
-
-            */
-
-            /*          Assignment 4.
-             *          
-                        Maximum Subarr
-                        You are given an integer arr A of size N.
-                        Now you need to find a subarr(contiguous elements)
-                        so that the sum of contiguous elements is maximum.
-            */
-
-
-            /*
-                        int n;
-                        Console.Write("Enter the size of an arr = ");
-                        n = Convert.ToInt32(Console.ReadLine());
-
-                        int[] arr = new int[n];
-                        Console.WriteLine("Enter the arr elemenst");
-
-                        for (int i = 0; i < n; i++)
-                        {
-                            arr[i] = Convert.ToInt32(Console.ReadLine());
-                        }
-
-                        Console.WriteLine("Maximum sum = "+MaximumSum(arr,n));
-            */
             Console.ReadKey();
 
         }
