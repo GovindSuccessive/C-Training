@@ -10,7 +10,7 @@ namespace OppsTask
     {
         public int Sub_Id;
         public string Sub_Name;
-        public string Sub_Code;      
-
+        public string Sub_Code;
+        public int Course_ID;
     }
 }
