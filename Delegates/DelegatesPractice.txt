@@ -1,0 +1,43 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace CSharpAdvancedTraining
+{
+         public delegate void ShowEmployeeDetails(string name, int age);
+    class DelegatesHandOn
+    {
+         
+         public void MethodEmployee(string Emp_Name,int Emp_Age)
+         {
+             Console.WriteLine("Employee Name : {0} \nEmployee Age : {1} ",Emp_Name,Emp_Age);
+         }
+    }
+}
+
+using System;
+using System.Collections.Generic;
+using System.Collections;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace CSharpAdvancedTraining
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            
+
+            DelegatesHandOn obj = new DelegatesHandOn();
+            ShowEmployeeDetails dl1 = new ShowEmployeeDetails(obj.MethodEmployee);
+            dl1("Govind", 15);
+            Console.ReadKey();
+
+            Console.ReadKey();
+        }
+    }
+}
