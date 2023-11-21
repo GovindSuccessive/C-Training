@@ -1,0 +1,72 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace CSharpAdvancedTraining
+{
+        public delegate double AddFirst(int a, float b, double c);
+        public delegate void AddSecond(int a, float b, double c);
+        public delegate bool CheckLenghtMethod(string val);
+    class GenricDelegates
+    {
+
+
+    public static double Adding1(int a,float b, double c)
+    {
+        return a + b + c;
+    }
+
+    public static void Adding2(int a , float b,double c)
+    {
+            double sum = a + b + c;
+        Console.WriteLine("Sum : " + sum) ;
+    }
+    
+    public static bool CheckLength(string val)
+        {
+            if (val.Length > 4)
+            {
+                return true;
+            }
+            return false;
+        }
+
+    }
+}
+
+using System;
+using System.Collections.Generic;
+using System.Collections;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace CSharpAdvancedTraining
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+		
+	 //AddFirst obj1 = new AddFirst(GenricDelegates.Adding1);
+            Func<int,float,double,double> obj1= new Func<int,float,double,double>(GenricDelegates.Adding1);
+            double val = obj1(2, 3.2f, 52.3423423);
+            Console.WriteLine("Value : "+val);
+            //AddSecond obj2 = new AddSecond(GenricDelegates.Adding2);
+            Action<int, float, double> obj2 = new Action<int, float, double>(GenricDelegates.Adding2);
+            obj2(3, 6, 2);
+
+            Predicate<string> obj3 = new Predicate<string>(GenricDelegates.CheckLength);
+            if (obj3("Govind"))
+            {
+                Console.WriteLine("String length greater then 4");
+            }
+            else
+            {
+                Console.WriteLine("String length smaller then 4");
+            }
+	}
+   }
+}
