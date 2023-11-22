@@ -1,0 +1,26 @@
+using System;
+using System.Collections.Generic;
+using System.Collections;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace CSharpAdvancedTraining
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            
+            //Console.WriteLine("Main Method is staring");
+            //ParallelePrograming.SomeMethod();
+            //Console.WriteLine("Main Method is End");
+            //ParallelePrograming.MethodParallelFor();
+            ParallelePrograming.MethodParallelForEach();
+
+            Console.ReadKey();
+        }
+    }
+
+    
+}
