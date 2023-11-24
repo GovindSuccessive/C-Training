@@ -1,0 +1,284 @@
+			DOT NET ASSIGNMENT { ADVANCE C# }
+
+Q1.Write a small program where you need to implement a Try and Catch Block .
+ANS.  
+Try Block :- In Try Block we generally write those code which may be gives/generate runtime error which complier cannot identify at complie time.
+Catch Block :- In Catch Block we generally passes or create Exception instance for those Exception which occure in try Block and after error occure in try block we catches in catch block by which our normale flow of program not be distrubed.
+Program:-
+ string str = "234#gs";
+            int val=0;
+            try
+            {
+                val = int.Parse(str);
+                Console.WriteLine("Values : " + val);
+            }
+            catch(FormatException ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            finally
+            {
+                Console.WriteLine("Values : "+ val);
+            }
+
+
+
+
+         OUTPUT:-
+
+
+
+
+
+
+
+
+Q2. When should we write multiple catch blocks for a Single Try block?
+
+Ans.  When we know there can be more than one exception present in Try Block and then we can create multiple Catch block to handle them individually.
+
+->To Print message specific to an exception.
+->To Execute some logic specific to an exception.
+
+Example:- 
+
+using System;
+					
+public class Program
+{
+	
+	public static void Main()
+	{
+		FormateExceptionMethod();
+	}
+	public static void FormateExceptionMethod()
+        {
+            string str = "234#gs";
+            int val = 0;
+            int[] arr = { 1, 3, 4, 2, 5 };
+            try
+            {
+                
+                Console.WriteLine(arr[5]);
+                val = int.Parse(str);
+                Console.WriteLine("Values : " + val);
+            }
+            catch (FormatException ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            catch(DivideByZeroException ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            finally
+            {
+                Console.WriteLine("Values : " + val);
+            }
+        }
+        
+    }
+
+OUTPUT :-
+
+
+
+
+
+
+
+
+
+
+
+Q3. How to define a delegate and call any method or event using it? 
+Ans. 
+
+Delegates:- Delegate are the object of Reference type or Type-Safe Function pointer.
+
+-> They can hold the reference of a method or function and  then call that method for execution. 
+
+Syntax:-  <Modifier>Delegate<Return type> Function_Name(Parameters)
+
+Program:- 
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace CSharpAdvancedTraining
+{
+    public delegate void ShowEmployeeDetails(string name, int age);
+    public class DelegatesHandOn
+    {
+         
+         public void MethodEmployee(string Emp_Name,int Emp_Age)
+         {
+             Console.WriteLine("Employee Name : {0} \nEmployee Age : {1} ",Emp_Name,Emp_Age);
+         }
+    }
+	public class Program
+    {
+        public static void Main(string[] args)
+        {
+
+            DelegatesHandOn obj = new DelegatesHandOn();
+            ShowEmployeeDetails dl1 = new ShowEmployeeDetails(obj.MethodEmployee);
+            dl1("Govind", 15);
+            
+		}
+}
+}
+
+OUTPUT :- 
+
+
+
+
+
+
+
+Q4. Try to use Func, Action and Predicate any program.  
+
+Ans. 
+Func Delegate:- IT is type of Generic Delegate which is use when we take multiple parameters and return single value.
+
+Predicate Delegate:- IT is type of Generic Delegate which is use when we take single parameter and do not return anything.
+
+Action Delegate:- IT is type of Generic Delegate which is use when we take multiple parameters and return boolean value.
+
+namespace CSharpAdvancedTraining
+{
+    
+    public class GenricDelegates2
+    {
+       
+        public  double CtcCalculator(int BS, int HW, double Pf, double gt)
+        {
+            return BS+HW+Pf+gt;
+        }
+
+        public   bool IsPfProfitable(int CTC)
+        {
+            if (CTC*0.12 > 2000)
+            {
+                return true;
+            }
+            return false;
+        }
+
+        public  void CtcChecker(int BS, int HW, double Pf, double gt)
+        {
+            if(BS + HW + Pf + gt > 800000)
+            {
+                Console.WriteLine("Ctc is good");
+            }
+            else
+            {
+                Console.WriteLine("You have Improve yourSlef");
+            }
+        }
+    }
+}
+
+
+namespace CSharpAdvancedTraining
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Stopwatch sw = new Stopwatch();
+            sw.Start();
+            GenricDelegates2 emp = new GenricDelegates2();
+            Func<int, int, double, double, double> emp1 = new Func<int, int, double, double,double>(emp.CtcCalculator);
+            //Console.WriteLine("CTC : "+emp1.CtcCalculator(45000,10000,1200,400));
+            Console.WriteLine("CTC : "+ emp1(45000, 10000, 1200, 400));
+
+            Predicate<int> pd = new Predicate<int>(emp.IsPfProfitable);
+            if (pd(200000))
+            {
+                Console.WriteLine("Profitable");
+            }
+            else
+            {
+                Console.WriteLine("Not Profitable");
+            }
+            Action<int, int, double, double> ac = new Action<int, int, double, double>(emp.CtcChecker);
+            ac(45000, 10000, 1200, 400);
+            sw.Stop();
+            Console.WriteLine(sw.ElapsedTicks);
+          
+            Console.ReadKey();
+        }
+    }
+
+    
+}
+OUTPUT :-
+
+
+
+
+
+
+
+
+
+
+
+Q5.
+1)
+public class Program
+    {
+        public static void Main(string[] args)
+        {
+			Func <string,string> output=delegate(string name)
+           {
+                 return "Hello" + name;
+           };
+            Console.Write(output("James"));
+          Action <int> output = i=>Console.Write(i);
+  output(10);
+
+            
+		}
+   }
+Ans. HelloJames.
+
+2)
+public class Program
+    {
+        public static void Main(string[] args)
+        {
+          Action <int> output = i=>Console.Write(i);
+          output(10);
+         }
+   }
+
+Ans. 10
+
+Q6. Write a program to implement Async await with proper justification.
+
+Ans.
+
+using System;
+using System.Threading.Tasks;
+
+class Program
+{
+    static async Task Main(string[] args)
+    {
+        Console.WriteLine("Starting the program...");
+
+        await Task.Delay(2000); // Simulate an asynchronous operation
+
+        Console.WriteLine("The asynchronous operation is complete.");
+
+        Console.WriteLine("Press any key to exit.");
+        Console.ReadKey();
+    }
+}
+In this program, the Main method is marked as , and it uses the await keyword to asynchronously wait for the completion of the Task.Delay method, which simulates an asynchronous operation. This allows the program to continue executing other tasks while waiting for the asynchronous operation to complete.  
