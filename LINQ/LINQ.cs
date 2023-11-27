@@ -6,6 +6,14 @@ using System.Threading.Tasks;
 
 namespace CSharpAdvancedTraining
 {
+    public  class Student
+    {
+        public int StudentID { get; set; }
+
+        public string StudentName { get; set; }
+
+        public int Age { get; set; }
+    }
     class LINQ
     {
         public static void LinqMethod()
@@ -41,6 +49,14 @@ namespace CSharpAdvancedTraining
             val.Add(13);
             val.Add(78);
 
+            IList<Student> studentList = new List<Student>() {
+               new Student() { StudentID = 1, StudentName = "John", Age = 18 } ,
+               new Student() { StudentID = 2, StudentName = "Steve",  Age = 15 } ,
+               new Student() { StudentID = 3, StudentName = "Bill",  Age = 25 } ,
+               new Student() { StudentID = 4, StudentName = "Ram" , Age = 20 } ,
+               new Student() { StudentID = 5, StudentName = "Ron" , Age = 19 },
+               new Student() { StudentID = 6, StudentName = "Ram" , Age = 18 }
+            };
             // LInq Sum
             var sum = val.Sum();
             Console.WriteLine("\nSum : "+sum);
@@ -56,6 +72,22 @@ namespace CSharpAdvancedTraining
             // LInq Count
             var count = val.Count();
             Console.WriteLine("Count : "+ count);
+
+            //Linq OrderBy
+            var orderList = val.OrderBy(x=>x);
+
+            foreach(var x in orderList)
+            {
+                Console.Write(x+" ");
+            }
+
+            var data = studentList.OrderBy(x => x.StudentName).ThenBy(x => x.Age);
+
+            foreach (var x in data)
+            {
+                Console.WriteLine(x.Age + " :" + x.StudentName);
+            }
+
         }
        
     }
