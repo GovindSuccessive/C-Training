@@ -43,6 +43,7 @@ namespace CSharpAdvancedTraining
         public static void LinqOperation()
         {
             List<int> val = new List<int>();
+            
             val.Add(5);
             val.Add(8);
             val.Add(2);
@@ -75,19 +76,60 @@ namespace CSharpAdvancedTraining
 
             //Linq OrderBy
             var orderList = val.OrderBy(x=>x);
-
+            var orderListDes = studentList.OrderByDescending(x => x.Age);
             foreach(var x in orderList)
             {
                 Console.Write(x+" ");
             }
 
-            var data = studentList.OrderBy(x => x.StudentName).ThenBy(x => x.Age);
+            //Linq OrderByDescending
+            Console.WriteLine("\n");
+            Console.WriteLine("Id Name Age");
+            foreach(var x in orderListDes)
+            {
+                Console.WriteLine("{0} {1} {2} ", x.StudentID, x.StudentName, x.Age); 
+            }
 
+            //Linq ThenBy
+            Console.WriteLine("\n");
+            Console.WriteLine("Age Name");
+            var data = studentList.OrderBy(x => x.StudentName).ThenBy(x => x.Age);
             foreach (var x in data)
             {
                 Console.WriteLine(x.Age + " :" + x.StudentName);
             }
 
+            //Linq ThenByDescending
+            Console.WriteLine("\n");
+            Console.WriteLine("Age Name");
+            var dataDec = studentList.OrderByDescending(x => x.StudentName).ThenBy(x => x.Age);
+            foreach (var x in dataDec)
+            {
+                Console.WriteLine(x.Age + " :" + x.StudentName);
+            }
+
+            //Linq First or FirstDefault
+            var stu = studentList.First(x => x.Age == 20);
+            Console.WriteLine("\n");
+            Console.WriteLine("First Element : " + stu.StudentName);
+
+            var stuFirstordef = val.FirstOrDefault(x=>x==7);
+            Console.WriteLine("FirstorDefault Element : " + stuFirstordef);
+
+
+            //Linq Last or LastorDefault
+            var a = studentList.Last(x => x.Age == 20);
+            Console.WriteLine("\n");
+            Console.WriteLine("Last Element : " + stu.StudentName);
+
+            var b = val.LastOrDefault(x => x == 7);
+            Console.WriteLine("LastorDefault Element : " + stuFirstordef);
+
+            //Linq Single or SingleDefault
+            List<int> cont = new List<int>() { 2, 5, 22, 32 };
+            Console.WriteLine("\nSingle Value : "+cont.Where(x=>x>30).Single());
+            Console.WriteLine("Single or Defualt Value : " + cont.Where(x => x > 50).SingleOrDefault());
+            
         }
        
     }
