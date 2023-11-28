@@ -129,7 +129,40 @@ namespace CSharpAdvancedTraining
             List<int> cont = new List<int>() { 2, 5, 22, 32 };
             Console.WriteLine("\nSingle Value : "+cont.Where(x=>x>30).Single());
             Console.WriteLine("Single or Defualt Value : " + cont.Where(x => x > 50).SingleOrDefault());
-            
+
+            //Linq Skip or SkipWhile
+            var c = cont.Skip(2);
+            Console.WriteLine("\nSKip");
+            foreach(var x in c)
+            {
+                Console.Write(x+" ");
+            }
+
+            var d = cont.SkipWhile(x => x < 3);
+            Console.WriteLine("\nSKipWhile");
+            foreach (var x in d)
+            {
+                Console.Write(x+" ");
+            }
+
+            // Take or TakeWhile
+            var e = cont.Take(3);
+            Console.WriteLine("\n\nTake");
+            foreach (var x in e)
+            {
+                Console.Write(x + " ");
+            }
+
+            Console.WriteLine("\n\nTakeWhile");
+            var f = cont.OrderBy(x=>x).TakeWhile(x => x < 10);
+            foreach (var x in f)
+            {
+                Console.Write(x + " ");
+            }
+
+
+
+
         }
        
     }
