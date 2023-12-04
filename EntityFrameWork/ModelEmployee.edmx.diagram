@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="1820fe5231d443b589abde8e394f2d96" Name="Diagram1">
+        <EntityTypeShape EntityType="db_Employee1Model.tb_Department" Width="1.5" PointX="2.75" PointY="5.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="db_Employee1Model.tb_Employee" Width="1.5" PointX="5" PointY="4.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="db_Employee1Model.tb_OrderDetails" Width="1.5" PointX="3" PointY="0.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="db_Employee1Model.tb_Orders" Width="1.5" PointX="0.75" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="db_Employee1Model.tb_Products" Width="1.5" PointX="0.75" PointY="5.125" IsExpanded="true" />
+        <AssociationConnector Association="db_Employee1Model.FK__tb_Employ__Depar__29572725" ManuallyRouted="false" />
+        <AssociationConnector Association="db_Employee1Model.FK__tb_OrderD__Order__33D4B598" ManuallyRouted="false" />
+        <AssociationConnector Association="db_Employee1Model.FK__tb_OrderD__Produ__36B12243" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

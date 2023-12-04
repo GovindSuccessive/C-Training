@@ -1,0 +1,286 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="db_Employee1Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="tb_Department">
+          <Key>
+            <PropertyRef Name="Dept_ID" />
+          </Key>
+          <Property Name="Dept_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Dept_Name" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="tb_Employee">
+          <Key>
+            <PropertyRef Name="PK_Emp_Id" />
+          </Key>
+          <Property Name="PK_Emp_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="emp_FirstName" Type="varchar" MaxLength="50" />
+          <Property Name="emp_LastName" Type="varchar" MaxLength="50" />
+          <Property Name="DepartmentID" Type="int" />
+        </EntityType>
+        <EntityType Name="tb_OrderDetails">
+          <Key>
+            <PropertyRef Name="OrderDetailsID" />
+          </Key>
+          <Property Name="OrderDetailsID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="OrderId" Type="int" />
+          <Property Name="ProductID" Type="int" />
+          <Property Name="Quantity" Type="int" />
+        </EntityType>
+        <EntityType Name="tb_Orders">
+          <Key>
+            <PropertyRef Name="Order_ID" />
+          </Key>
+          <Property Name="Order_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Customer_ID" Type="int" />
+          <Property Name="orderDate" Type="date" />
+        </EntityType>
+        <EntityType Name="tb_Products">
+          <Key>
+            <PropertyRef Name="Product_ID" />
+          </Key>
+          <Property Name="Product_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Product_Name" Type="varchar" MaxLength="50" />
+          <Property Name="UnitPrice" Type="int" />
+        </EntityType>
+        <Association Name="FK__tb_Employ__Depar__29572725">
+          <End Role="tb_Department" Type="Self.tb_Department" Multiplicity="0..1" />
+          <End Role="tb_Employee" Type="Self.tb_Employee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tb_Department">
+              <PropertyRef Name="Dept_ID" />
+            </Principal>
+            <Dependent Role="tb_Employee">
+              <PropertyRef Name="DepartmentID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tb_OrderD__Order__33D4B598">
+          <End Role="tb_Orders" Type="Self.tb_Orders" Multiplicity="0..1" />
+          <End Role="tb_OrderDetails" Type="Self.tb_OrderDetails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tb_Orders">
+              <PropertyRef Name="Order_ID" />
+            </Principal>
+            <Dependent Role="tb_OrderDetails">
+              <PropertyRef Name="OrderId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tb_OrderD__Produ__36B12243">
+          <End Role="tb_Products" Type="Self.tb_Products" Multiplicity="0..1" />
+          <End Role="tb_OrderDetails" Type="Self.tb_OrderDetails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tb_Products">
+              <PropertyRef Name="Product_ID" />
+            </Principal>
+            <Dependent Role="tb_OrderDetails">
+              <PropertyRef Name="ProductID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="db_Employee1ModelStoreContainer">
+          <EntitySet Name="tb_Department" EntityType="Self.tb_Department" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tb_Employee" EntityType="Self.tb_Employee" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tb_OrderDetails" EntityType="Self.tb_OrderDetails" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tb_Orders" EntityType="Self.tb_Orders" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tb_Products" EntityType="Self.tb_Products" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__tb_Employ__Depar__29572725" Association="Self.FK__tb_Employ__Depar__29572725">
+            <End Role="tb_Department" EntitySet="tb_Department" />
+            <End Role="tb_Employee" EntitySet="tb_Employee" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tb_OrderD__Order__33D4B598" Association="Self.FK__tb_OrderD__Order__33D4B598">
+            <End Role="tb_Orders" EntitySet="tb_Orders" />
+            <End Role="tb_OrderDetails" EntitySet="tb_OrderDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tb_OrderD__Produ__36B12243" Association="Self.FK__tb_OrderD__Produ__36B12243">
+            <End Role="tb_Products" EntitySet="tb_Products" />
+            <End Role="tb_OrderDetails" EntitySet="tb_OrderDetails" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="db_Employee1Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="tb_Department">
+          <Key>
+            <PropertyRef Name="Dept_ID" />
+          </Key>
+          <Property Name="Dept_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Dept_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="tb_Employee" Relationship="Self.FK__tb_Employ__Depar__29572725" FromRole="tb_Department" ToRole="tb_Employee" />
+        </EntityType>
+        <EntityType Name="tb_Employee">
+          <Key>
+            <PropertyRef Name="PK_Emp_Id" />
+          </Key>
+          <Property Name="PK_Emp_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="emp_FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="emp_LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DepartmentID" Type="Int32" />
+          <NavigationProperty Name="tb_Department" Relationship="Self.FK__tb_Employ__Depar__29572725" FromRole="tb_Employee" ToRole="tb_Department" />
+        </EntityType>
+        <EntityType Name="tb_OrderDetails">
+          <Key>
+            <PropertyRef Name="OrderDetailsID" />
+          </Key>
+          <Property Name="OrderDetailsID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="OrderId" Type="Int32" />
+          <Property Name="ProductID" Type="Int32" />
+          <Property Name="Quantity" Type="Int32" />
+          <NavigationProperty Name="tb_Orders" Relationship="Self.FK__tb_OrderD__Order__33D4B598" FromRole="tb_OrderDetails" ToRole="tb_Orders" />
+          <NavigationProperty Name="tb_Products" Relationship="Self.FK__tb_OrderD__Produ__36B12243" FromRole="tb_OrderDetails" ToRole="tb_Products" />
+        </EntityType>
+        <EntityType Name="tb_Orders">
+          <Key>
+            <PropertyRef Name="Order_ID" />
+          </Key>
+          <Property Name="Order_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Customer_ID" Type="Int32" />
+          <Property Name="orderDate" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="tb_OrderDetails" Relationship="Self.FK__tb_OrderD__Order__33D4B598" FromRole="tb_Orders" ToRole="tb_OrderDetails" />
+        </EntityType>
+        <EntityType Name="tb_Products">
+          <Key>
+            <PropertyRef Name="Product_ID" />
+          </Key>
+          <Property Name="Product_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Product_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="UnitPrice" Type="Int32" />
+          <NavigationProperty Name="tb_OrderDetails" Relationship="Self.FK__tb_OrderD__Produ__36B12243" FromRole="tb_Products" ToRole="tb_OrderDetails" />
+        </EntityType>
+        <Association Name="FK__tb_Employ__Depar__29572725">
+          <End Role="tb_Department" Type="Self.tb_Department" Multiplicity="0..1" />
+          <End Role="tb_Employee" Type="Self.tb_Employee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tb_Department">
+              <PropertyRef Name="Dept_ID" />
+            </Principal>
+            <Dependent Role="tb_Employee">
+              <PropertyRef Name="DepartmentID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tb_OrderD__Order__33D4B598">
+          <End Role="tb_Orders" Type="Self.tb_Orders" Multiplicity="0..1" />
+          <End Role="tb_OrderDetails" Type="Self.tb_OrderDetails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tb_Orders">
+              <PropertyRef Name="Order_ID" />
+            </Principal>
+            <Dependent Role="tb_OrderDetails">
+              <PropertyRef Name="OrderId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tb_OrderD__Produ__36B12243">
+          <End Role="tb_Products" Type="Self.tb_Products" Multiplicity="0..1" />
+          <End Role="tb_OrderDetails" Type="Self.tb_OrderDetails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tb_Products">
+              <PropertyRef Name="Product_ID" />
+            </Principal>
+            <Dependent Role="tb_OrderDetails">
+              <PropertyRef Name="ProductID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="db_Employee1Entities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="tb_Department" EntityType="Self.tb_Department" />
+          <EntitySet Name="tb_Employee" EntityType="Self.tb_Employee" />
+          <EntitySet Name="tb_OrderDetails" EntityType="Self.tb_OrderDetails" />
+          <EntitySet Name="tb_Orders" EntityType="Self.tb_Orders" />
+          <EntitySet Name="tb_Products" EntityType="Self.tb_Products" />
+          <AssociationSet Name="FK__tb_Employ__Depar__29572725" Association="Self.FK__tb_Employ__Depar__29572725">
+            <End Role="tb_Department" EntitySet="tb_Department" />
+            <End Role="tb_Employee" EntitySet="tb_Employee" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tb_OrderD__Order__33D4B598" Association="Self.FK__tb_OrderD__Order__33D4B598">
+            <End Role="tb_Orders" EntitySet="tb_Orders" />
+            <End Role="tb_OrderDetails" EntitySet="tb_OrderDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tb_OrderD__Produ__36B12243" Association="Self.FK__tb_OrderD__Produ__36B12243">
+            <End Role="tb_Products" EntitySet="tb_Products" />
+            <End Role="tb_OrderDetails" EntitySet="tb_OrderDetails" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="db_Employee1ModelStoreContainer" CdmEntityContainer="db_Employee1Entities">
+          <EntitySetMapping Name="tb_Department">
+            <EntityTypeMapping TypeName="db_Employee1Model.tb_Department">
+              <MappingFragment StoreEntitySet="tb_Department">
+                <ScalarProperty Name="Dept_ID" ColumnName="Dept_ID" />
+                <ScalarProperty Name="Dept_Name" ColumnName="Dept_Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tb_Employee">
+            <EntityTypeMapping TypeName="db_Employee1Model.tb_Employee">
+              <MappingFragment StoreEntitySet="tb_Employee">
+                <ScalarProperty Name="PK_Emp_Id" ColumnName="PK_Emp_Id" />
+                <ScalarProperty Name="emp_FirstName" ColumnName="emp_FirstName" />
+                <ScalarProperty Name="emp_LastName" ColumnName="emp_LastName" />
+                <ScalarProperty Name="DepartmentID" ColumnName="DepartmentID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tb_OrderDetails">
+            <EntityTypeMapping TypeName="db_Employee1Model.tb_OrderDetails">
+              <MappingFragment StoreEntitySet="tb_OrderDetails">
+                <ScalarProperty Name="OrderDetailsID" ColumnName="OrderDetailsID" />
+                <ScalarProperty Name="OrderId" ColumnName="OrderId" />
+                <ScalarProperty Name="ProductID" ColumnName="ProductID" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tb_Orders">
+            <EntityTypeMapping TypeName="db_Employee1Model.tb_Orders">
+              <MappingFragment StoreEntitySet="tb_Orders">
+                <ScalarProperty Name="Order_ID" ColumnName="Order_ID" />
+                <ScalarProperty Name="Customer_ID" ColumnName="Customer_ID" />
+                <ScalarProperty Name="orderDate" ColumnName="orderDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tb_Products">
+            <EntityTypeMapping TypeName="db_Employee1Model.tb_Products">
+              <MappingFragment StoreEntitySet="tb_Products">
+                <ScalarProperty Name="Product_ID" ColumnName="Product_ID" />
+                <ScalarProperty Name="Product_Name" ColumnName="Product_Name" />
+                <ScalarProperty Name="UnitPrice" ColumnName="UnitPrice" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
