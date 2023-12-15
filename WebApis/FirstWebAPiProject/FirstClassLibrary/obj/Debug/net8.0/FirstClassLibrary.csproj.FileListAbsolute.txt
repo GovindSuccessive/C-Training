@@ -1,0 +1,14 @@
+C:\Users\govind.sharma\source\repos\FirstWebAPiProject\FirstClassLibrary\bin\Debug\net8.0\FirstClassLibrary.deps.json
+C:\Users\govind.sharma\source\repos\FirstWebAPiProject\FirstClassLibrary\bin\Debug\net8.0\FirstClassLibrary.runtimeconfig.json
+C:\Users\govind.sharma\source\repos\FirstWebAPiProject\FirstClassLibrary\bin\Debug\net8.0\FirstClassLibrary.dll
+C:\Users\govind.sharma\source\repos\FirstWebAPiProject\FirstClassLibrary\bin\Debug\net8.0\FirstClassLibrary.pdb
+C:\Users\govind.sharma\source\repos\FirstWebAPiProject\FirstClassLibrary\obj\Debug\net8.0\FirstClassLibrary.csproj.AssemblyReference.cache
+C:\Users\govind.sharma\source\repos\FirstWebAPiProject\FirstClassLibrary\obj\Debug\net8.0\FirstClassLibrary.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\govind.sharma\source\repos\FirstWebAPiProject\FirstClassLibrary\obj\Debug\net8.0\FirstClassLibrary.AssemblyInfoInputs.cache
+C:\Users\govind.sharma\source\repos\FirstWebAPiProject\FirstClassLibrary\obj\Debug\net8.0\FirstClassLibrary.AssemblyInfo.cs
+C:\Users\govind.sharma\source\repos\FirstWebAPiProject\FirstClassLibrary\obj\Debug\net8.0\FirstClassLibrary.csproj.CoreCompileInputs.cache
+C:\Users\govind.sharma\source\repos\FirstWebAPiProject\FirstClassLibrary\obj\Debug\net8.0\FirstClassLibrary.dll
+C:\Users\govind.sharma\source\repos\FirstWebAPiProject\FirstClassLibrary\obj\Debug\net8.0\refint\FirstClassLibrary.dll
+C:\Users\govind.sharma\source\repos\FirstWebAPiProject\FirstClassLibrary\obj\Debug\net8.0\FirstClassLibrary.pdb
+C:\Users\govind.sharma\source\repos\FirstWebAPiProject\FirstClassLibrary\obj\Debug\net8.0\FirstClassLibrary.genruntimeconfig.cache
+C:\Users\govind.sharma\source\repos\FirstWebAPiProject\FirstClassLibrary\obj\Debug\net8.0\ref\FirstClassLibrary.dll
